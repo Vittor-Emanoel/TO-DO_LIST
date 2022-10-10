@@ -8,7 +8,7 @@ import CustomButton from "./CustomButton";
 
 import "./AddTask.scss";
 
-const AddTask = () => {
+const AddTask = ({ fetchTasks }) => {
     const [task, setTask] = useState("");
     const alert = useAlert();
 
@@ -26,11 +26,16 @@ const AddTask = () => {
             await axios.post(
                 "https://fsc-task-manager-backend.herokuapp.com/tasks",
                 {
+                    //corpo
                     description: task,
                     isCompleted: false,
                 }
             );
-        } catch (error) {}
+            await fetchTasks();
+            setTask("");
+        } catch (error) {
+            alert.error("Algo não deu bom hein...");
+        }
     };
 
     return (
