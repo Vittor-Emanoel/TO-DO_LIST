@@ -2,7 +2,7 @@
     padding: 60px 85px;
     display: flex;
     flex-direction: column;
-    max-width: 40%;
+    min-width: 100%;
     padding-top: 50px;
     height: 100vh;
     overflow-y: hidden;
@@ -63,5 +63,64 @@
         .tasks-list {
             margin-top: 28px;
         }
+    }
+}
+
+/*mobile version */
+
+@media (max-width: 425px) {
+    .tasks-container {
+        width: 100%;
+    }
+    .tasks-container input {
+        width: 100%;
+    }
+}
+@media (min-width: 428px) {
+    .tasks-container {
+        width: 100%;
+    }
+    .tasks-container input {
+        width: 100%;
+    }
+}
+
+/*tablet version*/
+@media (min-width: 768px) {
+    .destaques-tenis {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        grid-gap: 1em;
+    }
+    #backToTopButton {
+        display: none;
+    }
+}
+
+/*desktop version*/
+@media (min-width: 1024px) {
+    .destaques-tenis {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+
+        width: 100%;
+        margin-bottom: 10rem;
+    }
+    .banner {
+        padding: 10rem 1em;
+        background-position: center;
+    }
+    #backToTopButton {
+        display: none;
+    }
+    .card img {
+        width: 100%;
+    }
+    .desconto-texto {
+        font-size: 1.7rem;
+    }
+    .rodape-texto {
+        font-size: 1.7rem;
     }
 }
