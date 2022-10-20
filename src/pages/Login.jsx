@@ -1,7 +1,8 @@
 import CustomButton from "../components/CustomButton";
 
-import logo from "../components/logo-2.png";
+import logo from "../assets/images/logo-2.png";
 
+import "./Login.scss";
 const Login = () => {
     return (
         <div className="login-container">
