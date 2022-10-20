@@ -1,8 +1,14 @@
-import "./App.css";
-import Tasks from "./components/Tasks";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+
+import "./App.scss";
 
 function App() {
-    return <Tasks />;
+    return (
+        <Routes>
+            <Route path="/" element={<Home />} />
+        </Routes>
+    );
 }
 
 export default App;
