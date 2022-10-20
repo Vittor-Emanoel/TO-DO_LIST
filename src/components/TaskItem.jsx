@@ -13,7 +13,7 @@ const TaskItem = ({ task, fetchTasks }) => {
                 `https://fsc-task-manager-backend.herokuapp.com/tasks/${task._id}`
             );
             await fetchTasks();
-        } catch (error) {
+        } catch (_error) {
             alert.error("Algo deu errado!");
         }
     };
@@ -30,7 +30,7 @@ const TaskItem = ({ task, fetchTasks }) => {
             await fetchTasks();
 
             alert.success("A tarefa concluida!");
-        } catch (error) {
+        } catch (_error) {
             alert.error("Algo deu errado.");
         }
     };

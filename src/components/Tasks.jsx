@@ -5,6 +5,7 @@ import "./Tasks.scss";
 
 import TaskItem from "./TaskItem";
 import AddTask from "./AddTask";
+import { useAlert } from "react-alert";
 
 const Tasks = () => {
     const [tasks, setTasks] = useState([]);
@@ -17,7 +18,7 @@ const Tasks = () => {
 
             setTasks(data);
         } catch (error) {
-            console.log(error);
+            alert.error("Não foi possível recuperar as tarefas");
         }
     };
 
