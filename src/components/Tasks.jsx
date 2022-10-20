@@ -10,6 +10,7 @@ import { useAlert } from "react-alert";
 const Tasks = () => {
     const [tasks, setTasks] = useState([]);
 
+    const alert = useAlert();
     const fetchTasks = async () => {
         try {
             const { data } = await axios.get(
@@ -17,7 +18,7 @@ const Tasks = () => {
             );
 
             setTasks(data);
-        } catch (error) {
+        } catch (_error) {
             alert.error("Não foi possível recuperar as tarefas");
         }
     };
@@ -36,11 +37,11 @@ const Tasks = () => {
                 <div className="tasks-list">
                     {tasks
                         .filter((task) => task.isCompleted === false)
-                        .map((lastTask, index) => (
+                        .map((lastTask) => (
                             <TaskItem
                                 task={lastTask}
                                 fetchTasks={fetchTasks}
-                                key={index}
+                                key={lastTask._id}
                             />
                         ))}
                 </div>
@@ -51,11 +52,11 @@ const Tasks = () => {
                 <div className="tasks-list">
                     {tasks
                         .filter((task) => task.isCompleted)
-                        .map((completedTask, index) => (
+                        .map((completedTask) => (
                             <TaskItem
                                 task={completedTask}
                                 fetchTasks={fetchTasks}
-                                key={index}
+                                key={completedTask._id}
                             />
                         ))}
                 </div>
