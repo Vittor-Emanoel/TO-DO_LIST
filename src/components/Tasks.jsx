@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import axios from "axios";
 
 import "./Tasks.scss";
@@ -11,7 +11,8 @@ const Tasks = () => {
     const [tasks, setTasks] = useState([]);
 
     const alert = useAlert();
-    const fetchTasks = async () => {
+
+    const fetchTasks = useCallback(async () => {
         try {
             const { data } = await axios.get(
                 "https://fsc-task-manager-backend.herokuapp.com/tasks"
@@ -21,7 +22,7 @@ const Tasks = () => {
         } catch (_error) {
             alert.error("Não foi possível recuperar as tarefas");
         }
-    };
+    }, [alert]);
 
     const lastTasks = useMemo(() => {
         return tasks.filter((task) => task.isCompleted === false);
@@ -33,8 +34,7 @@ const Tasks = () => {
 
     useEffect(() => {
         fetchTasks();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [fetchTasks]);
 
     return (
         <div className="tasks-container">
